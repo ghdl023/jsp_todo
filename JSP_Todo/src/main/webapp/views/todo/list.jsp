@@ -9,8 +9,13 @@
 </head>
 <body>
 	<h1>List Page</h1>
+	<h2>${ loginInfo }</h2>
 	<c:forEach var="dto" items="${list }">
 		<li><a href="<%= request.getContextPath()%>/todo/detail?tno=${dto.tno}">${ dto }</a></li>
 	</c:forEach>
+	
+	<form action="<%= request.getContextPath() %>/logout" method="POST">
+		<button type="submit">Logout</button>
+	</form>
 </body>
 </html>

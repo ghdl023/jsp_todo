@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import todo.dto.TodoDTO;
 import todo.service.TodoService;
@@ -26,6 +27,14 @@ public class TodoRegisterController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("입력화면을 볼 수 있또록 구성");
+		
+		HttpSession session = request.getSession();
+		
+		if(session.isNew()) { // 기존에 JSESSIONID가 없는 새로운 사용자
+			response.sendRedirect(request.getContextPath() + "/login");
+			return;
+			
+		}
 		
 		request.getRequestDispatcher("/views/todo/register.jsp").forward(request, response);
 	}
