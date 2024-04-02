@@ -21,7 +21,25 @@ public enum MemberService {
 		dto.setMid(vo.getMid());
 		dto.setMpw(vo.getMpw());
 		dto.setMname(vo.getMname());
+		dto.setUuid(vo.getUuid());
 		
 		return dto;
+	}
+	
+	public MemberDTO selectByUuid(String uuid) throws Exception {
+		MemberVO vo = dao.selectByUuid(uuid);
+		
+		MemberDTO dto = new MemberDTO();
+		dto.setMid(vo.getMid());
+		dto.setMpw(vo.getMpw());
+		dto.setMname(vo.getMname());
+		dto.setUuid(uuid);
+		
+		return dto;
+	}
+	
+	public void updateUuid(String mid, String uuid) throws Exception {
+		
+		dao.updateUuid(mid, uuid);
 	}
 }

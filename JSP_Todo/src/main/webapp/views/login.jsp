@@ -12,6 +12,7 @@
 	<form action="<%= request.getContextPath() %>/login" method="POST">
 		<input type="text" name="mid" />
 		<input type="text" name="mpw" />
+		<input type="checkbox" name="auto" />
 		
 		<button type="submit">Login</button>
 	</form>
